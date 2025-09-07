@@ -1,0 +1,195 @@
+[33mcommit 0eb02b16d765b05c2472034773e98314127fd0b2[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: bolarinaishat <mohammedolayinka1@gmail.com>
+Date:   Sun Sep 7 14:23:43 2025 +0100
+
+    attendance
+
+[1mdiff --git a/dashboard.html b/dashboard.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..cd63851[m
+[1m--- /dev/null[m
+[1m+++ b/dashboard.html[m
+[36m@@ -0,0 +1,180 @@[m
+[32m+[m[32m<!DOCTYPE html>[m
+[32m+[m[32m<html lang="en">[m
+[32m+[m[32m<head>[m
+[32m+[m[32m  <meta charset="UTF-8">[m
+[32m+[m[32m  <meta name="viewport" content="width=device-width, initial-scale=1.0">[m
+[32m+[m[32m  <title>Dashboard | SAS Attendance</title>[m
+[32m+[m[32m  <style>[m
+[32m+[m[32m    :root {[m
+[32m+[m[32m      --primary: #000000;[m
+[32m+[m[32m      --secondary: #CCCCCC;[m
+[32m+[m[32m      --accent: #00A8A8;[m
+[32m+[m[32m      --bg: #FFFFFF;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    body {[m
+[32m+[m[32m      margin: 0;[m
+[32m+[m[32m      font-family: 'Segoe UI', Tahoma, sans-serif;[m
+[32m+[m[32m      background: #f5f5f5;[m
+[32m+[m[32m      color: var(--primary);[m
+[32m+[m[32m      display: flex;[m
+[32m+[m[32m      min-height: 100vh;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    /* Sidebar */[m
+[32m+[m[32m    .sidebar {[m
+[32m+[m[32m      width: 220px;[m
+[32m+[m[32m      background: var(--accent);[m
+[32m+[m[32m      color: var(--bg);[m
+[32m+[m[32m      display: flex;[m
+[32m+[m[32m      flex-direction: column;[m
+[32m+[m[32m      padding: 1rem;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .logo {[m
+[32m+[m[32m      display: flex;[m
+[32m+[m[32m      align-items: center;[m
+[32m+[m[32m      gap: 0.5rem;[m
+[32m+[m[32m      margin-bottom: 2rem;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .logo-circle {[m
+[32m+[m[32m      width: 40px;[m
+[32m+[m[32m      height: 40px;[m
+[32m+[m[32m      background: var(--primary);[m
+[32m+[m[32m      border-radius: 50%;[m
+[32m+[m[32m      display: flex;[m
+[32m+[m[32m      justify-content: center;[m
+[32m+[m[32m      align-items: center;[m
+[32m+[m[32m      color: var(--bg);[m
+[32m+[m[32m      font-weight: bold;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .logo span {[m
+[32m+[m[32m      font-weight: bold;[m
+[32m+[m[32m      font-size: 1.1rem;[m
+[32m+[m[32m      color: var(--bg);[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .sidebar a {[m
+[32m+[m[32m      display: block;[m
+[32m+[m[32m      padding: 0.8rem 1rem;[m
+[32m+[m[32m      margin: 0.3rem 0;[m
+[32m+[m[32m      color: var(--bg);[m
+[32m+[m[32m      text-decoration: none;[m
+[32m+[m[32m      font-weight: bold;[m
+[32m+[m[32m      border-radius: 6px;[m
+[32m+[m[32m      transition: background 0.3s;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .sidebar a:hover, .sidebar a.active {[m
+[32m+[m[32m      background: var(--primary);[m
+[32m+[m[32m      color: var(--bg);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    /* Main content */[m
+[32m+[m[32m    .main {[m
+[32m+[m[32m      flex: 1;[m
+[32m+[m[32m      padding: 2rem;[m
+[32m+[m[32m      background: var(--bg);[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .card {[m
+[32m+[m[32m      background: var(--bg);[m
+[32m+[m[32m      padding: 2rem;[m
+[32m+[m[32m      border-radius: 12px;[m
+[32m+[m[32m      box-shadow: 0 4px 12px rgba(0,0,0,0.1);[m
+[32m+[m[32m      margin-bottom: 2rem;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .card h2 {[m
+[32m+[m[32m      margin-bottom: 1rem;[m
+[32m+[m[32m      color: var(--accent);[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .card p {[m
+[32m+[m[32m      color: var(--primary);[m
+[32m+[m[32m      opacity: 0.9;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    /* Profile table */[m
+[32m+[m[32m    .profile-table {[m
+[32m+[m[32m      width: 100%;[m
+[32m+[m[32m      border-collapse: collapse;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .profile-table td {[m
+[32m+[m[32m      padding: 0.8rem;[m
+[32m+[m[32m      border-bottom: 1px solid var(--secondary);[m
+[32m+[m[32m    }[m
+[32m+[m[32m    .profile-table td:first-child {[m
+[32m+[m[32m      font-weight: bold;[m
+[32m+[m[32m      width: 40%;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    /* Attendance history table */[m
+[32m+[m[32m    table {[m
+[32m+[m[32m      width: 100%;[m
+[32m+[m[32m      border-collapse: collapse;[m
+[32m+[m[32m      margin-top: 1rem;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    table th, table td {[m
+[32m+[m[32m      padding: 0.8rem;[m
+[32m+[m[32m      border: 1px solid var(--secondary);[m
+[32m+[m[32m      text-align: center;[m
+[32m+[m[32m    }[m
+[32m+[m[32m    table th {[m
+[32m+[m[32m      background: var(--accent);[m
+[32m+[m[32m      color: var(--bg);[m
+[32m+[m[32m    }[m
+[32m+[m[32m  </style>[m
+[32m+[m[32m</head>[m
+[32m+[m[32m<body>[m
+[32m+[m[32m  <!-- Sidebar -->[m
+[32m+[m[32m  <div class="sidebar">[m
+[32m+[m[32m    <div class="logo">[m
+[32m+[m[32m      <div class="logo-circle">SAS</div>[m
+[32m+[m[32m      <span>Attendance</span>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m    <a href="#" class="active" onclick="showSection('profile')">Profile</a>[m
+[32m+[m[32m    <a href="#" onclick="showSection('history')">Attendance History</a>[m
+[32m+[m[32m    <a href="#" onclick="showSection('mark')">Mark Attendance</a>[m
+[32m+[m[32m    <a href="login.html">Logout</a>[m
+[32m+[m[32m  </div>[m
+[32m+[m
+[32m+[m[32m  <!-- Main Content -->[m
+[32m+[m[32m  <div class="main">[m
+[32m+[m[32m    <!-- Profile Section -->[m
+[32m+[m[32m    <div id="profile" class="card">[m
+[32m+[m[32m      <h2>My Details</h2>[m
+[32m+[m[32m      <table class="profile-table">[m
+[32m+[m[32m        <tr><td>Name:</td><td>John Doe</td></tr>[m
+[32m+[m[32m        <tr><td>Student ID:</td><td>STU12345</td></tr>[m
+[32m+[m[32m        <tr><td>Email:</td><td>johndoe@email.com</td></tr>[m
+[32m+[m[32m        <tr><td>Department:</td><td>Computer Science</td></tr>[m
+[32m+[m[32m      </table>[m
+[32m+[m[32m    </div>[m
+[32m+[m
+[32m+[m[32m    <!-- Attendance History Section -->[m
+[32m+[m[32m    <div id="history" class="card" style="display: none;">[m
+[32m+[m[32m      <h2>Attendance History</h2>[m
+[32m+[m[32m      <table>[m
+[32m+[m[32m        <tr><th>Date</th><th>Status</th></tr>[m
+[32m+[m[32m        <tr><td>2025-09-01</td><td>Present</td></tr>[m
+[32m+[m[32m        <tr><td>2025-09-02</td><td>Absent</td></tr>[m
+[32m+[m[32m        <tr><td>2025-09-03</td><td>Present</td></tr>[m
+[32m+[m[32m      </table>[m
+[32m+[m[32m    </div>[m
+[32m+[m
+[32m+[m[32m    <!-- Mark Attendance Section -->[m
+[32m+[m[32m    <div id="mark" class="card" style="display: none;">[m
+[32m+[m[32m      <h2>Mark Attendance (OTP)</h2>[m
+[32m+[m[32m      <p>Click below to request an OTP and mark your attendance.</p>[m
+[32m+[m[32m      <a href="otp2.html" ><button style="padding:1rem; background:var(--accent); border:none; border-radius:8px; color:var(--bg); font-weight:bold; cursor:pointer;">Request OTP </button></a>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m  </div>[m
+[32m+[m
+[32m+[m[32m  <script>[m
+[32m+[m[32m    function showSection(sectionId) {[m
+[32m+[m[32m      // Hide all sections[m
+[32m+[m[32m      document.querySelectorAll('.main .card').forEach(card => card.style.display = 'none');[m
+[32m+[m[32m      // Remove active class from all links[m
+[32m+[m[32m      document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));[m
+[32m+[m[32m      // Show selected section[m
+[32m+[m[32m      document.getElementById(sectionId).style.display = 'block';[m
+[32m+[m[32m      event.target.classList.add('active');[m
+[32m+[m[32m    }[m
+[32m+[m[32m  </script>[m
+[32m+[m[32m</body>[m
+[32m+[m[32m</html>[m
+[1mdiff --git a/index.html b/index.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f014399[m
