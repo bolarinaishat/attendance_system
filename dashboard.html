@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | SAS Attendance</title>
+  <style>
+    :root {
+      --primary: #000000;
+      --secondary: #CCCCCC;
+      --accent: #00A8A8;
+      --bg: #FFFFFF;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f5f5f5;
+      color: var(--primary);
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 220px;
+      background: var(--accent);
+      color: var(--bg);
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+    }
+    .logo-circle {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--bg);
+      font-weight: bold;
+    }
+    .logo span {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--bg);
+    }
+    .sidebar a {
+      display: block;
+      padding: 0.8rem 1rem;
+      margin: 0.3rem 0;
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+    .sidebar a:hover, .sidebar a.active {
+      background: var(--primary);
+      color: var(--bg);
+    }
+
+    /* Main content */
+    .main {
+      flex: 1;
+      padding: 2rem;
+      background: var(--bg);
+    }
+    .card {
+      background: var(--bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 2rem;
+    }
+    .card h2 {
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+    .card p {
+      color: var(--primary);
+      opacity: 0.9;
+    }
+
+    /* Profile table */
+    .profile-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .profile-table td {
+      padding: 0.8rem;
+      border-bottom: 1px solid var(--secondary);
+    }
+    .profile-table td:first-child {
+      font-weight: bold;
+      width: 40%;
+    }
+
+    /* Attendance history table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+    table th, table td {
+      padding: 0.8rem;
+      border: 1px solid var(--secondary);
+      text-align: center;
+    }
+    table th {
+      background: var(--accent);
+      color: var(--bg);
+    }
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-circle">SAS</div>
+      <span>Attendance</span>
+    </div>
+    <a href="#" class="active" onclick="showSection('profile')">Profile</a>
+    <a href="#" onclick="showSection('history')">Attendance History</a>
+    <a href="#" onclick="showSection('mark')">Mark Attendance</a>
+    <a href="login.html">Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Profile Section -->
+    <div id="profile" class="card">
+      <h2>My Details</h2>
+      <table class="profile-table">
+        <tr><td>Name:</td><td>John Doe</td></tr>
+        <tr><td>Student ID:</td><td>STU12345</td></tr>
+        <tr><td>Email:</td><td>johndoe@email.com</td></tr>
+        <tr><td>Department:</td><td>Computer Science</td></tr>
+      </table>
+    </div>
+
+    <!-- Attendance History Section -->
+    <div id="history" class="card" style="display: none;">
+      <h2>Attendance History</h2>
+      <table>
+        <tr><th>Date</th><th>Status</th></tr>
+        <tr><td>2025-09-01</td><td>Present</td></tr>
+        <tr><td>2025-09-02</td><td>Absent</td></tr>
+        <tr><td>2025-09-03</td><td>Present</td></tr>
+      </table>
+    </div>
+
+    <!-- Mark Attendance Section -->
+    <div id="mark" class="card" style="display: none;">
+      <h2>Mark Attendance (OTP)</h2>
+      <p>Click below to request an OTP and mark your attendance.</p>
+      <a href="otp2.html" ><button style="padding:1rem; background:var(--accent); border:none; border-radius:8px; color:var(--bg); font-weight:bold; cursor:pointer;">Request OTP </button></a>
+    </div>
+  </div>
+
+  <script>
+    function showSection(sectionId) {
+      // Hide all sections
+      document.querySelectorAll('.main .card').forEach(card => card.style.display = 'none');
+      // Remove active class from all links
+      document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
+      // Show selected section
+      document.getElementById(sectionId).style.display = 'block';
+      event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>

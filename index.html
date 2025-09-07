@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome | SAS Attendance</title>
+  <style>
+    :root {
+      --primary: #000000;   /* Black */
+      --secondary: #CCCCCC; /* Light Gray */
+      --accent: #00A8A8;    /* Teal */
+      --bg: #FFFFFF;        /* White */
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, var(--accent), var(--primary));
+      color: var(--primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--accent); /* Teal navbar */
+      color: var(--bg);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo-circle {
+      width: 45px;
+      height: 45px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--bg);
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .logo span {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: var(--bg);
+    }
+    nav a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      color: var(--bg);
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+    nav a:hover {
+      opacity: 0.8;
+    }
+
+    /* Hero Section */
+    .hero {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero-card {
+      background: var(--bg);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      max-width: 650px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+    .hero-card h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+    .hero-card p {
+      font-size: 1.2rem;
+      color: var(--primary);
+      opacity: 0.8;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--secondary);
+      color: var(--primary);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <div class="logo-circle">SAS</div>
+      <span>Attendance</span>
+    </div>
+    <nav>
+      <a href="login.html">Login</a>
+      <a href="register.html">Register</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-card">
+      <h2>SAS Attendance</h2>
+      <p>Punctuality Counts — Secure and reliable attendance management with OTP verification.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 SAS Attendance. All Rights Reserved.
+  </footer>
+</body>
+</html>

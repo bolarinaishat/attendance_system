@@ -1,0 +1,42 @@
+<!-- Mark Attendance Section -->
+<div id="mark" class="card" style="display: none;">
+  <h2>Mark Attendance (OTP)</h2>
+  <p>Click below to request an OTP and mark your attendance.</p>
+  
+  <!-- Request OTP button -->
+  <button onclick="generateOTP()" style="padding:1rem; background:var(--accent); border:none; border-radius:8px; color:var(--bg); font-weight:bold; cursor:pointer;">Request OTP</button>
+  
+  <!-- OTP Input (hidden at first) -->
+  <div id="otp-section" style="margin-top:1.5rem; display:none;">
+    <p>Enter the OTP sent to your email/phone:</p>
+    <input type="text" id="otpInput" placeholder="Enter OTP" style="padding:0.8rem; border:1px solid #ccc; border-radius:6px;">
+    <button onclick="verifyOTP()" style="padding:0.8rem; margin-left:0.5rem; background:var(--primary); color:var(--bg); border:none; border-radius:6px; cursor:pointer;">Verify OTP</button>
+  </div>
+  
+  <!-- Result message -->
+  <p id="otpResult" style="margin-top:1rem; font-weight:bold;"></p>
+</div>
+
+<script>
+  let generatedOTP = null;
+
+  function generateOTP() {
+    // Generate a random 6-digit OTP
+    generatedOTP = Math.floor(100000 + Math.random() * 900000);
+    console.log("Generated OTP (demo): " + generatedOTP);
+
+    document.getElementById("otp-section").style.display = "block";
+    document.getElementById("otpResult").textContent = "OTP has been sent to your registered contact.";
+  }
+
+  function verifyOTP() {
+    const enteredOTP = document.getElementById("otpInput").value;
+    if (enteredOTP == generatedOTP) {
+      document.getElementById("otpResult").textContent = "✅ Attendance marked successfully!";
+      document.getElementById("otpResult").style.color = "green";
+    } else {
+      document.getElementById("otpResult").textContent = "❌ Invalid OTP. Please try again.";
+      document.getElementById("otpResult").style.color = "red";
+    }
+  }
+</script>
